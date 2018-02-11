@@ -6,7 +6,7 @@ namespace Stratadox\DomainAnalyser\Test\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Stratadox\DomainAnalyser\PropertyAnalysis;
-use Stratadox\DomainAnalyser\Test\Feature\Double\FooBar\Foo;
+use Stratadox\DomainAnalyser\Test\Unit\Double\Foo;
 
 /**
  * @covers \Stratadox\DomainAnalyser\PropertyAnalysis
@@ -36,6 +36,7 @@ class PropertyAnalysis_contains_information_on_the_property extends TestCase
             'int' => ['int'],
             'bool' => ['bool'],
             'Foo' => [Foo::class],
+            '__CLASS__' => [__CLASS__],
         ];
     }
 }
