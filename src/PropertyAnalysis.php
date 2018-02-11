@@ -7,15 +7,22 @@ namespace Stratadox\DomainAnalyser;
 final class PropertyAnalysis
 {
     private $type;
+    private $elementType;
 
-    private function __construct(string $type)
+    private function __construct(string $type, ?string $element)
     {
         $this->type = $type;
+        $this->elementType = $element;
     }
 
     public static function forType(string $type) : self
     {
-        return new self($type);
+        return new self($type, null);
+    }
+
+    public static function forCollection(string $type, string $element) : self
+    {
+        return new self($type, $element);
     }
 
     public function type() : string
@@ -25,6 +32,6 @@ final class PropertyAnalysis
 
     public function elementType() : ?string
     {
-        return null;
+        return $this->elementType;
     }
 }
