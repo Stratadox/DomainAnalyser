@@ -11,6 +11,10 @@ class MethodFinder
 {
     public function methodOfThe(Assign $expression) : ClassMethod
     {
-        return $expression->getAttribute('parent');
+        do {
+            $expression = $expression->getAttribute('parent');
+        } while (!$expression instanceof ClassMethod);
+
+        return $expression;
     }
 }

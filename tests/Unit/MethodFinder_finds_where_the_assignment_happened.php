@@ -58,8 +58,7 @@ class MethodFinder_finds_where_the_assignment_happened extends TestCase
                             )
                         ]
                     ]
-                ),
-
+                )
             ]
         ]);
 
