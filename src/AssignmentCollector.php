@@ -45,6 +45,11 @@ class AssignmentCollector extends NodeVisitorAbstract
     private function isOwnProperty(PropertyFetch $property)
     {
         return $property->var instanceof Variable
-            && $property->var->name === 'this';
+            && $this->appliesToMe($property->var);
+    }
+
+    private function appliesToMe(Variable $assignment)
+    {
+        return $assignment->name === 'this';
     }
 }
