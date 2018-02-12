@@ -12,7 +12,12 @@ use PhpParser\NodeVisitorAbstract;
 
 class AssignmentCollector extends NodeVisitorAbstract
 {
-    private $assignments = [];
+    private $assignments;
+
+    public function __construct()
+    {
+        $this->assignments = new Assignments;
+    }
 
     public function leaveNode(Node $currentNode)
     {
@@ -29,10 +34,10 @@ class AssignmentCollector extends NodeVisitorAbstract
         if (!$this->isOwnProperty($node->var)) {
             return;
         }
-        $this->assignments[] = $node;
+        $this->assignments = $this->assignments->add($node);
     }
 
-    public function assignments() : array
+    public function assignments() : Assignments
     {
         return $this->assignments;
     }
