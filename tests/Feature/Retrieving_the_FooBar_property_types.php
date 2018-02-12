@@ -12,6 +12,7 @@ use Stratadox\DomainAnalyser\PropertyAnalysis;
 use Stratadox\DomainAnalyser\Test\Feature\Double\FooBar\Bar;
 use Stratadox\DomainAnalyser\Test\Feature\Double\FooBar\Baz;
 use Stratadox\DomainAnalyser\Test\Feature\Double\FooBar\Foo;
+use Stratadox\DomainAnalyser\Test\Feature\Double\FooBar\Qux;
 
 /**
  * @coversNothing
@@ -59,6 +60,21 @@ class Retrieving_the_FooBar_property_types extends TestCase
         );
         $this->assertSame(
             Bar::class,
+            $property->elementType()
+        );
+    }
+
+    /** @test */
+    function Qux_references_other_Qux_objects()
+    {
+        $property = $this->propertyOf(Qux::class, 'quxes');
+
+        $this->assertSame(
+            'array',
+            $property->type()
+        );
+        $this->assertSame(
+            Qux::class,
             $property->elementType()
         );
     }
