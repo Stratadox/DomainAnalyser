@@ -8,11 +8,11 @@ class Baz
 {
     private $foo;
 
-    /**
-     * @param Foo $foo
-     */
     public function __construct($foo)
     {
+        $this->mustBeFoo($foo);
         $this->foo = $foo;
     }
+
+    private function mustBeFoo(Foo $foo) : void {}
 }
