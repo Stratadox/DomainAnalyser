@@ -13,6 +13,9 @@ class MethodFinder
     {
         do {
             $expression = $expression->getAttribute('parent');
+            if (!isset($expression)) {
+                throw new MethodNotFound;
+            }
         } while (!$expression instanceof ClassMethod);
 
         return $expression;
