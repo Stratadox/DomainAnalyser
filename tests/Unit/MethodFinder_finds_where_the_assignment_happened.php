@@ -13,9 +13,11 @@ use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\If_;
 use PHPUnit\Framework\TestCase;
 use Stratadox\DomainAnalyser\MethodFinder;
+use Stratadox\DomainAnalyser\MethodNotFound;
 
 /**
  * @covers \Stratadox\DomainAnalyser\MethodFinder
+ * @covers \Stratadox\DomainAnalyser\MethodNotFound
  */
 class MethodFinder_finds_where_the_assignment_happened extends TestCase
 {
@@ -68,5 +70,19 @@ class MethodFinder_finds_where_the_assignment_happened extends TestCase
         $finder = new MethodFinder;
 
         $this->assertSame($method, $finder->methodOfThe($assignment));
+    }
+
+    /** @test */
+    function throwing_an_exception_when_not_in_a_method()
+    {
+        $assignment = new Assign(
+            new PropertyFetch(new Variable('this'), 'foo'),
+            new Variable('foo')
+        );
+
+        $finder = new MethodFinder;
+
+        $this->expectException(MethodNotFound::class);
+        $finder->methodOfThe($assignment);
     }
 }
