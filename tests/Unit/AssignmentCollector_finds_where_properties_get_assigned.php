@@ -12,6 +12,7 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Scalar\LNumber;
 use PHPUnit\Framework\TestCase;
 use Stratadox\DomainAnalyser\AssignmentCollector;
+use Stratadox\DomainAnalyser\Assignments;
 
 /**
  * @covers \Stratadox\DomainAnalyser\AssignmentCollector
@@ -23,15 +24,15 @@ class AssignmentCollector_finds_where_properties_get_assigned extends TestCase
     {
         $collector = new AssignmentCollector;
 
-        $assign = new Assign(
+        $assignment = new Assign(
             new PropertyFetch(new Variable('this'), 'foo'),
             new Variable('bar')
         );
 
-        $collector->leaveNode($assign);
+        $collector->leaveNode($assignment);
 
-        $this->assertSame(
-            [$assign],
+        $this->assertEquals(
+            new Assignments($assignment),
             $collector->assignments()
         );
     }
@@ -54,8 +55,8 @@ class AssignmentCollector_finds_where_properties_get_assigned extends TestCase
         $collector->leaveNode($assignFoo);
         $collector->leaveNode($assignBar);
 
-        $this->assertSame(
-            [$assignFoo, $assignBar],
+        $this->assertEquals(
+            new Assignments($assignFoo, $assignBar),
             $collector->assignments()
         );
     }
@@ -79,8 +80,8 @@ class AssignmentCollector_finds_where_properties_get_assigned extends TestCase
         $collector->leaveNode($assignFooProperty);
         $collector->leaveNode($functionCall);
 
-        $this->assertSame(
-            [$assignFooProperty],
+        $this->assertEquals(
+            new Assignments($assignFooProperty),
             $collector->assignments()
         );
     }
