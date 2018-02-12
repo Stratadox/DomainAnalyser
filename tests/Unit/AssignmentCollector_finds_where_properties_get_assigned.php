@@ -85,4 +85,27 @@ class AssignmentCollector_finds_where_properties_get_assigned extends TestCase
             $collector->assignments()
         );
     }
+
+    /** @test */
+    function only_keeping_track_of_own_property_assignments()
+    {
+        $collector = new AssignmentCollector;
+
+        $assignThisFoo = new Assign(
+            new PropertyFetch(new Variable('this'), 'foo'),
+            new Variable('foo')
+        );
+        $assignThatFoo = new Assign(
+            new PropertyFetch(new Variable('that'), 'foo'),
+            new Variable('foo')
+        );
+
+        $collector->leaveNode($assignThisFoo);
+        $collector->leaveNode($assignThatFoo);
+
+        $this->assertEquals(
+            new Assignments($assignThisFoo),
+            $collector->assignments()
+        );
+    }
 }
