@@ -10,7 +10,7 @@ use PhpParser\ParserFactory;
 use PHPUnit\Framework\TestCase;
 use Stratadox\DomainAnalyser\AssignmentCollector;
 use Stratadox\DomainAnalyser\MethodFinder;
-use Stratadox\DomainAnalyser\ParentConnector;
+use Stratadox\DomainAnalyser\NodeConnector;
 
 /**
  * @coversNothing
@@ -23,7 +23,7 @@ class MethodFinder_locates_state_changing_methods extends TestCase
         $parser = (new ParserFactory)->create(ParserFactory::PREFER_PHP7);
         $traverser = new NodeTraverser;
         $collector = new AssignmentCollector;
-        $connector = new ParentConnector;
+        $connector = new NodeConnector;
         $finder = new MethodFinder;
 
         $code = '<?php
