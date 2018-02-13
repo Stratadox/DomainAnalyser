@@ -40,8 +40,10 @@ Install using composer:
 
 - Add InstanceOfDetector
     - Detect if in instanceOf check
+    - Walk up or down? Both?
 - Add InstanceOfExceptionDetector
     - Detect if an exception is thrown in negative instanceOf check
+    - How?
 - Add ForeignTypeHintDetector
     - Detect if the variable is an argument in a call 
     - Check with ParameterIndex
