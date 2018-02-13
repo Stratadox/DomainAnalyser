@@ -34,7 +34,8 @@ Install using composer:
 - Add ParameterIndex
     - Cache for parameter types by method and parameter
 - Add ParameterTypeResolver
-    - The same as VariableTypeResolver but in the other direction
+    - VariableTypeResolver but in the other direction
+    - The other direction has branches. How to approach?
 - Add ParameterIndexer
     - Ask ParameterTypeResolver 
 
