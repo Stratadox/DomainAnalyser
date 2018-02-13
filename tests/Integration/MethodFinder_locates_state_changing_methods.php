@@ -66,27 +66,21 @@ class MethodFinder_locates_state_changing_methods extends TestCase
 
         $this->assertCount(4, $assignments);
 
-        // @todo make Methods collection
-        /** @var ClassMethod[] $methods */
-        $methods = [];
-        foreach ($assignments as $assignment) {
-            $method = $finder->methodOfThe($assignment);
-            if (!in_array($method, $methods, true)) {
-                $methods[] = $method;
-            }
-        }
-
-        $this->assertCount(3, $methods);
-
-        $methodNames = array_map(function (ClassMethod $method) {
-            return $method->name;
-        }, $methods);
-
-        sort($methodNames);
-
         $this->assertEquals(
-            ['__construct', 'setBar', 'setFoo'],
-            $methodNames
+            '__construct',
+            $finder->methodOfThe($assignments[0])->name
+        );
+        $this->assertEquals(
+            '__construct',
+            $finder->methodOfThe($assignments[1])->name
+        );
+        $this->assertEquals(
+            'setFoo',
+            $finder->methodOfThe($assignments[2])->name
+        );
+        $this->assertEquals(
+            'setBar',
+            $finder->methodOfThe($assignments[3])->name
         );
     }
 }
