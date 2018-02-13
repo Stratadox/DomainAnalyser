@@ -24,7 +24,9 @@ class Retrieving_the_FooBar_property_types extends TestCase
 
     protected function setUp()
     {
-        $this->analysis = $this->analyse(__DIR__.'/Double/FooBar');
+        $this->analysis = DomainAnalyser::forTheModelsIn(
+            __DIR__.'/Double/FooBar'
+        )->analyse();
     }
 
     /** @test */
@@ -98,10 +100,5 @@ class Retrieving_the_FooBar_property_types extends TestCase
     private function analysed(string $class) : ClassAnalysis
     {
         return $this->analysis->ofThe($class);
-    }
-
-    private function analyse(string $directory) : DomainAnalysis
-    {
-        return DomainAnalyser::forTheModelsIn($directory)->analyse();
     }
 }

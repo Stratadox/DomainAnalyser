@@ -6,7 +6,7 @@ namespace Stratadox\DomainAnalyser\Test\Feature\Double\FooBar;
 
 class Foo
 {
-    private $bars;
+    private $bars = [];
 
     public function addBar(Bar $bar) : void
     {
