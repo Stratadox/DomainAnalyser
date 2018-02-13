@@ -2,17 +2,19 @@
 
 (badges)
 
-# Installation
+## Installation
 
 Install using composer:
 
 `composer require stratadox/domain-analyser`
 
-# Todo
+## Todo
 
+### Remodeling
 - Add AmbiguousPropertyAnalysis
     - Apply to types and/or subtypes - requires PropertyAnalysis remodeling
 
+### Detect types
 - Add TypeDetector
     - If variable, ask VariableTypeResolver
     - Else ask detectors
@@ -20,6 +22,8 @@ Install using composer:
     - Walk back statements in method, starting at the assignment
     - Ask Detectors below for type indications of local variable on each node
     - Continue until out of nodes (should be lazy)
+
+### Collect return types
 
 - Add ReturnCollector
     - Collect return statements
@@ -29,22 +33,29 @@ Install using composer:
     - Ask TypeDetector for the return types of the collected methods
     - Add return types to MethodIndex
 
+### Collect parameter types
+
 - Add ParameterCollector
     - Collect method parameters
 - Add ParameterIndex
     - Cache for parameter types by method and parameter
 - Add ParameterTypeResolver
     - VariableTypeResolver but in the other direction
-    - The other direction has branches. How to approach?
+    - The other direction has branches: queue upon branching (with limit?)
 - Add ParameterIndexer
     - Ask ParameterTypeResolver 
+
+### Type detection
 
 - Add InstanceOfDetector
     - Detect if in instanceOf check
     - Check if the current node is the expression in instanceOf
 - Add InstanceOfExceptionDetector
     - Detect if an exception is thrown in negative instanceOf check
-    - How?
+    - Check if: 
+        - Current node is an if statement
+        - The if condition is instanceOf
+        - There is a throw in the direct children
 - Add ForeignTypeHintDetector
     - Detect if the variable is an argument in a call 
     - Check with ParameterIndex
