@@ -40,7 +40,7 @@ Install using composer:
 
 - Add InstanceOfDetector
     - Detect if in instanceOf check
-    - Walk up or down? Both?
+    - Check if the current node is the expression in instanceOf
 - Add InstanceOfExceptionDetector
     - Detect if an exception is thrown in negative instanceOf check
     - How?
@@ -52,4 +52,4 @@ Install using composer:
     - Check with MethodIndex
 - Add ParameterTypeHintDetector
     - Detect if the variable is a type hinted argument in the containing method call
-    - Just walk the tree branch
+    - The simple case..
