@@ -33,7 +33,7 @@ class Retrieving_the_FooBar_property_types extends TestCase
     {
         $property = $this->propertyOf(Bar::class, 'bar');
 
-        $this->assertSame(
+        $this->assertEquals(
             'string',
             $property->type()
         );
@@ -44,7 +44,7 @@ class Retrieving_the_FooBar_property_types extends TestCase
     {
         $property = $this->propertyOf(Baz::class, 'foo');
 
-        $this->assertSame(
+        $this->assertEquals(
             Foo::class,
             $property->type()
         );
@@ -55,11 +55,11 @@ class Retrieving_the_FooBar_property_types extends TestCase
     {
         $property = $this->propertyOf(Foo::class, 'bars');
 
-        $this->assertSame(
+        $this->assertEquals(
             'array',
             $property->type()
         );
-        $this->assertSame(
+        $this->assertEquals(
             Bar::class,
             $property->elementType()
         );
@@ -70,11 +70,11 @@ class Retrieving_the_FooBar_property_types extends TestCase
     {
         $property = $this->propertyOf(Qux::class, 'quxes');
 
-        $this->assertSame(
+        $this->assertEquals(
             'array',
             $property->type()
         );
-        $this->assertSame(
+        $this->assertEquals(
             Qux::class,
             $property->elementType()
         );

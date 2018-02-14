@@ -21,7 +21,7 @@ class Property_contains_type_information extends TestCase
      */
     function having_a_property_type_but_no_element_type_for($scalarType)
     {
-        $this->assertSame(
+        $this->assertEquals(
             $scalarType,
             Property::forType($scalarType)->type()
         );
@@ -38,11 +38,11 @@ class Property_contains_type_information extends TestCase
      */
     function having_a_property_type_and_element_type_for($collection, $element)
     {
-        $this->assertSame(
+        $this->assertEquals(
             $collection,
             Property::forCollection($collection, $element)->type()
         );
-        $this->assertSame(
+        $this->assertEquals(
             $element,
             Property::forCollection($collection, $element)->elementType()
         );
