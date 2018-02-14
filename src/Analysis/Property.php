@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Stratadox\DomainAnalyser;
+namespace Stratadox\DomainAnalyser\Analysis;
 
-final class PropertyAnalysis
+final class Property
 {
     private $type;
     private $elementType;

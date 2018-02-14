@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Stratadox\DomainAnalyser;
+namespace Stratadox\DomainAnalyser\SyntaxTree;
 
 use PhpParser\Node\Expr\Assign;
 use Stratadox\Collection\Appendable;

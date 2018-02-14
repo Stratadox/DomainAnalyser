@@ -5,10 +5,9 @@ declare(strict_types=1);
 namespace Stratadox\DomainAnalyser\Test\Feature;
 
 use PHPUnit\Framework\TestCase;
-use Stratadox\DomainAnalyser\ClassAnalysis;
-use Stratadox\DomainAnalyser\DomainAnalysis;
+use Stratadox\DomainAnalyser\Analysis\Properties;
+use Stratadox\DomainAnalyser\Analysis\Property;
 use Stratadox\DomainAnalyser\DomainAnalyser;
-use Stratadox\DomainAnalyser\PropertyAnalysis;
 use Stratadox\DomainAnalyser\Test\Feature\Double\FooBar\Bar;
 use Stratadox\DomainAnalyser\Test\Feature\Double\FooBar\Baz;
 use Stratadox\DomainAnalyser\Test\Feature\Double\FooBar\Foo;
@@ -19,7 +18,7 @@ use Stratadox\DomainAnalyser\Test\Feature\Double\FooBar\Qux;
  */
 class Retrieving_the_FooBar_property_types extends TestCase
 {
-    /** @var DomainAnalysis */
+    /** @var \Stratadox\DomainAnalyser\Analysis\Domain */
     private $analysis;
 
     protected function setUp()
@@ -84,20 +83,20 @@ class Retrieving_the_FooBar_property_types extends TestCase
     private function propertyOf(
         string $class,
         string $property
-    ) : PropertyAnalysis
+    ) : Property
     {
         return $this->property($this->analysed($class), $property);
     }
 
     private function property(
-        ClassAnalysis $classAnalysis,
+        Properties $classAnalysis,
         string $property
-    ) : PropertyAnalysis
+    ) : Property
     {
         return $classAnalysis->property($property);
     }
 
-    private function analysed(string $class) : ClassAnalysis
+    private function analysed(string $class) : Properties
     {
         return $this->analysis->ofThe($class);
     }

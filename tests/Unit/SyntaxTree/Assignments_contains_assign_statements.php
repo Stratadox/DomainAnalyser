@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Stratadox\DomainAnalyser\Test\Unit;
+namespace Stratadox\DomainAnalyser\Test\Unit\SyntaxTree;
 
 use PhpParser\Node\Expr\Assign;
 use PhpParser\Node\Expr\PropertyFetch;
 use PhpParser\Node\Expr\Variable;
 use PHPUnit\Framework\TestCase;
-use Stratadox\DomainAnalyser\Assignments;
+use Stratadox\DomainAnalyser\SyntaxTree\Assignments;
 
 /**
- * @covers \Stratadox\DomainAnalyser\Assignments
+ * @covers \Stratadox\DomainAnalyser\SyntaxTree\Assignments
  */
 class Assignments_contains_assign_statements extends TestCase
 {

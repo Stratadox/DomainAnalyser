@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Stratadox\DomainAnalyser\Test\Unit;
+namespace Stratadox\DomainAnalyser\Test\Unit\Analysis;
 
 use PHPUnit\Framework\TestCase;
-use Stratadox\DomainAnalyser\PropertyAnalysis;
+use Stratadox\DomainAnalyser\Analysis\Property;
 use Stratadox\DomainAnalyser\Test\Unit\Double\Foo;
 use Stratadox\DomainAnalyser\Test\Unit\Double\Foos;
 
 /**
- * @covers \Stratadox\DomainAnalyser\PropertyAnalysis
+ * @covers \Stratadox\DomainAnalyser\Analysis\Property
  */
-class PropertyAnalysis_contains_information_on_the_property extends TestCase
+class Property_contains_type_information extends TestCase
 {
     /**
      * @test
@@ -23,10 +23,10 @@ class PropertyAnalysis_contains_information_on_the_property extends TestCase
     {
         $this->assertSame(
             $scalarType,
-            PropertyAnalysis::forType($scalarType)->type()
+            Property::forType($scalarType)->type()
         );
         $this->assertNull(
-            PropertyAnalysis::forType($scalarType)->elementType()
+            Property::forType($scalarType)->elementType()
         );
     }
 
@@ -40,11 +40,11 @@ class PropertyAnalysis_contains_information_on_the_property extends TestCase
     {
         $this->assertSame(
             $collection,
-            PropertyAnalysis::forCollection($collection, $element)->type()
+            Property::forCollection($collection, $element)->type()
         );
         $this->assertSame(
             $element,
-            PropertyAnalysis::forCollection($collection, $element)->elementType()
+            Property::forCollection($collection, $element)->elementType()
         );
     }
 

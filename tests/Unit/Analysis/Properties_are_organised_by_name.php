@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Stratadox\DomainAnalyser\Test\Unit;
+namespace Stratadox\DomainAnalyser\Test\Unit\Analysis;
 
 use PHPUnit\Framework\TestCase;
-use Stratadox\DomainAnalyser\ClassAnalysis;
-use Stratadox\DomainAnalyser\PropertyAnalysis;
+use Stratadox\DomainAnalyser\Analysis\Properties;
+use Stratadox\DomainAnalyser\Analysis\Property;
 
 /**
- * @covers \Stratadox\DomainAnalyser\ClassAnalysis
+ * @covers \Stratadox\DomainAnalyser\Analysis\Properties
  */
-class ClassAnalysis_consists_of_a_map_of_PropertyAnalysis extends TestCase
+class Properties_are_organised_by_name extends TestCase
 {
     /** @test */
     function retrieving_property_analysis_by_name()
     {
-        $barProperty = PropertyAnalysis::forType('string');
-        $bazProperty = PropertyAnalysis::forType('int');
+        $barProperty = Property::forType('string');
+        $bazProperty = Property::forType('int');
 
-        $classAnalysis = ClassAnalysis::with([
+        $classAnalysis = Properties::with([
             'bar' => $barProperty,
             'baz' => $bazProperty,
         ]);

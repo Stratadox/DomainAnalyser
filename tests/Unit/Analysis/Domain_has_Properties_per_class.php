@@ -2,33 +2,33 @@
 
 declare(strict_types=1);
 
-namespace Stratadox\DomainAnalyser\Test\Unit;
+namespace Stratadox\DomainAnalyser\Test\Unit\Analysis;
 
 use PHPUnit\Framework\TestCase;
-use Stratadox\DomainAnalyser\ClassAnalysis;
-use Stratadox\DomainAnalyser\DomainAnalysis;
-use Stratadox\DomainAnalyser\PropertyAnalysis;
+use Stratadox\DomainAnalyser\Analysis\Properties;
+use Stratadox\DomainAnalyser\Analysis\Domain;
+use Stratadox\DomainAnalyser\Analysis\Property;
 use Stratadox\DomainAnalyser\Test\Unit\Double\Bar;
 use Stratadox\DomainAnalyser\Test\Unit\Double\Foo;
 use Stratadox\DomainAnalyser\Test\Unit\Double\Foos;
 
 /**
- * @covers \Stratadox\DomainAnalyser\DomainAnalysis
+ * @covers \Stratadox\DomainAnalyser\Analysis\Domain
  */
-class DomainAnalysis_contains_a_map_of_ClassAnalysis extends TestCase
+class Domain_has_Properties_per_class extends TestCase
 {
     /** @test */
     function retrieving_class_analysis_by_name()
     {
-        $fooAnalysis = ClassAnalysis::with([
-            'bar' => PropertyAnalysis::forType('string'),
-            'baz' => PropertyAnalysis::forType('int'),
+        $fooAnalysis = Properties::with([
+            'bar' => Property::forType('string'),
+            'baz' => Property::forType('int'),
         ]);
-        $barAnalysis = ClassAnalysis::with([
-            'foos' => PropertyAnalysis::forCollection(Foos::class, Foo::class),
+        $barAnalysis = Properties::with([
+            'foos' => Property::forCollection(Foos::class, Foo::class),
         ]);
 
-        $domainAnalysis = DomainAnalysis::with([
+        $domainAnalysis = Domain::with([
             Foo::class => $fooAnalysis,
             Bar::class => $barAnalysis,
         ]);

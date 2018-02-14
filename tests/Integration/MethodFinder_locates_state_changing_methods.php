@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace Stratadox\DomainAnalyser\Test\Integration;
 
-use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\NodeTraverser;
 use PhpParser\ParserFactory;
 use PHPUnit\Framework\TestCase;
-use Stratadox\DomainAnalyser\AssignmentCollector;
-use Stratadox\DomainAnalyser\MethodFinder;
-use Stratadox\DomainAnalyser\NodeConnector;
+use Stratadox\DomainAnalyser\SyntaxTree\AssignmentCollector;
+use Stratadox\DomainAnalyser\SyntaxTree\MethodFinder;
+use Stratadox\DomainAnalyser\SyntaxTree\NodeConnector;
 
 /**
  * @coversNothing

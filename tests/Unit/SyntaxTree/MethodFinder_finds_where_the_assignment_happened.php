@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Stratadox\DomainAnalyser\Test\Unit;
+namespace Stratadox\DomainAnalyser\Test\Unit\SyntaxTree;
 
 use PhpParser\Node\Expr\Assign;
 use PhpParser\Node\Expr\PropertyFetch;
@@ -12,12 +12,12 @@ use PhpParser\Node\Scalar\LNumber;
 use PhpParser\Node\Stmt\ClassMethod;
 use PhpParser\Node\Stmt\If_;
 use PHPUnit\Framework\TestCase;
-use Stratadox\DomainAnalyser\MethodFinder;
-use Stratadox\DomainAnalyser\MethodNotFound;
+use Stratadox\DomainAnalyser\SyntaxTree\MethodFinder;
+use Stratadox\DomainAnalyser\SyntaxTree\MethodNotFound;
 
 /**
- * @covers \Stratadox\DomainAnalyser\MethodFinder
- * @covers \Stratadox\DomainAnalyser\MethodNotFound
+ * @covers \Stratadox\DomainAnalyser\SyntaxTree\MethodFinder
+ * @covers \Stratadox\DomainAnalyser\SyntaxTree\MethodNotFound
  */
 class MethodFinder_finds_where_the_assignment_happened extends TestCase
 {
@@ -51,16 +51,14 @@ class MethodFinder_finds_where_the_assignment_happened extends TestCase
                 new Param('foo', null, 'string')
             ],
             'stmts' => [
-                $condition = new If_(new LNumber(1),
-                    [
-                        'stmts' => [
-                            $assignment = new Assign(
-                                new PropertyFetch(new Variable('this'), 'foo'),
-                                new Variable('foo')
-                            )
-                        ]
+                $condition = new If_(new LNumber(1), [
+                    'stmts' => [
+                        $assignment = new Assign(
+                            new PropertyFetch(new Variable('this'), 'foo'),
+                            new Variable('foo')
+                        )
                     ]
-                )
+                ])
             ]
         ]);
 

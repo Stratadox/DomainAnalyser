@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Stratadox\DomainAnalyser\Test\Unit;
+namespace Stratadox\DomainAnalyser\Test\Unit\SyntaxTree;
 
 use PhpParser\Node\Expr\Assign;
 use PhpParser\Node\Expr\FuncCall;
@@ -11,11 +11,11 @@ use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Name;
 use PhpParser\Node\Scalar\LNumber;
 use PHPUnit\Framework\TestCase;
-use Stratadox\DomainAnalyser\AssignmentCollector;
-use Stratadox\DomainAnalyser\Assignments;
+use Stratadox\DomainAnalyser\SyntaxTree\AssignmentCollector;
+use Stratadox\DomainAnalyser\SyntaxTree\Assignments;
 
 /**
- * @covers \Stratadox\DomainAnalyser\AssignmentCollector
+ * @covers \Stratadox\DomainAnalyser\SyntaxTree\AssignmentCollector
  */
 class AssignmentCollector_finds_where_properties_get_assigned extends TestCase
 {

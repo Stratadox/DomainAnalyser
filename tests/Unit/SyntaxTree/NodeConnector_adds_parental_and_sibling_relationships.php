@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Stratadox\DomainAnalyser\Test\Unit;
+namespace Stratadox\DomainAnalyser\Test\Unit\SyntaxTree;
 
 use PhpParser\Node\Expr\Assign;
 use PhpParser\Node\Expr\PropertyFetch;
@@ -10,10 +10,10 @@ use PhpParser\Node\Expr\Variable;
 use PhpParser\Node\Param;
 use PhpParser\Node\Stmt\ClassMethod;
 use PHPUnit\Framework\TestCase;
-use Stratadox\DomainAnalyser\NodeConnector;
+use Stratadox\DomainAnalyser\SyntaxTree\NodeConnector;
 
 /**
- * @covers \Stratadox\DomainAnalyser\NodeConnector
+ * @covers \Stratadox\DomainAnalyser\SyntaxTree\NodeConnector
  */
 class NodeConnector_adds_parental_and_sibling_relationships extends TestCase
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Stratadox\DomainAnalyser;
+namespace Stratadox\DomainAnalyser\Analysis;
 
-final class DomainAnalysis
+final class Domain
 {
     private $classes;
 
@@ -22,11 +22,11 @@ final class DomainAnalysis
         return new self($classes);
     }
 
-    public function ofThe(string $class) : ClassAnalysis
+    public function ofThe(string $class) : Properties
     {
         return $this->classes[$class];
     }
 
     private function mustBeString(string $key) : void {}
-    private function mustBeClassAnalysis(ClassAnalysis $value) : void {}
+    private function mustBeClassAnalysis(Properties $value) : void {}
 }

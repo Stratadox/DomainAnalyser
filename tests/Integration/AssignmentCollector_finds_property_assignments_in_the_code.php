@@ -10,8 +10,8 @@ use PhpParser\Node\Expr\Variable;
 use PhpParser\NodeTraverser;
 use PhpParser\ParserFactory;
 use PHPUnit\Framework\TestCase;
-use Stratadox\DomainAnalyser\AssignmentCollector;
-use Stratadox\DomainAnalyser\Assignments;
+use Stratadox\DomainAnalyser\SyntaxTree\AssignmentCollector;
+use Stratadox\DomainAnalyser\SyntaxTree\Assignments;
 
 /**
  * @coversNothing

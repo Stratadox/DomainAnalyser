@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Stratadox\DomainAnalyser;
+namespace Stratadox\DomainAnalyser\Analysis;
 
-final class ClassAnalysis
+final class Properties
 {
-    /** @var PropertyAnalysis[] */
+    /** @var Property[] */
     private $properties;
 
     private function __construct(array $properties)
@@ -23,11 +23,11 @@ final class ClassAnalysis
         return new self($properties);
     }
 
-    public function property(string $name) : PropertyAnalysis
+    public function property(string $name) : Property
     {
         return $this->properties[$name];
     }
 
     private function mustBeString(string $key) : void {}
-    private function mustBePropertyAnalysis(PropertyAnalysis $value) : void {}
+    private function mustBePropertyAnalysis(Property $value) : void {}
 }
