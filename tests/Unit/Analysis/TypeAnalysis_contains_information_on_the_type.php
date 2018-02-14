@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Stratadox\DomainAnalyser\Test\Unit\Analysis;
 
 use PHPUnit\Framework\TestCase;
-use Stratadox\DomainAnalyser\Analysis\TypeAnalysis;
+use Stratadox\DomainAnalyser\Analysis\Type;
 
 /**
  * @covers \Stratadox\DomainAnalyser\Analysis\Type
