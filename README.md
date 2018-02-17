@@ -10,10 +10,6 @@ Install using composer:
 
 ## Todo
 
-### Remodeling
-- Add AmbiguousPropertyAnalysis
-    - Apply to types and/or subtypes - requires PropertyAnalysis remodeling
-
 ### Detect types
 - Add TypeDetector
     - If variable, ask VariableTypeResolver
