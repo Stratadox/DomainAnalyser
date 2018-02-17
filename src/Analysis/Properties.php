@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Stratadox\DomainAnalyser\Analysis;
 
+use Stratadox\DomainAnalyser\DescribesTheProperties;
 use Stratadox\DomainAnalyser\DescribesTheProperty;
 
-final class Properties
+final class Properties implements DescribesTheProperties
 {
     /** @var Property[] */
     private $properties;
