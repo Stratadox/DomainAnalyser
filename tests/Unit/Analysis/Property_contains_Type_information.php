@@ -12,7 +12,7 @@ use Stratadox\DomainAnalyser\Test\Unit\Double\Foos;
 /**
  * @covers \Stratadox\DomainAnalyser\Analysis\Property
  */
-class Property_contains_type_information extends TestCase
+class Property_contains_Type_information extends TestCase
 {
     /**
      * @test

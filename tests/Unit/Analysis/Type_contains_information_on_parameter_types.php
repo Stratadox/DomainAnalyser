@@ -10,7 +10,7 @@ use Stratadox\DomainAnalyser\Analysis\Type;
 /**
  * @covers \Stratadox\DomainAnalyser\Analysis\Type
  */
-class TypeAnalysis_contains_information_on_the_type extends TestCase
+class Type_contains_information_on_parameter_types extends TestCase
 {
     /** @test */
     function retrieving_a_string_type()
