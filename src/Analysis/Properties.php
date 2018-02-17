@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Stratadox\DomainAnalyser\Analysis;
 
+use Stratadox\DomainAnalyser\DescribesTheProperty;
+
 final class Properties
 {
     /** @var Property[] */
@@ -13,21 +15,21 @@ final class Properties
     {
         foreach ($properties as $property => $analysis) {
             $this->mustBeString($property);
-            $this->mustBePropertyAnalysis($analysis);
+            $this->mustDescribeTheProperty($analysis);
         }
         $this->properties = $properties;
     }
 
-    public static function with(array $properties): self
+    public static function with(array $properties): Properties
     {
-        return new self($properties);
+        return new Properties($properties);
     }
 
-    public function property(string $name): Property
+    public function property(string $name): DescribesTheProperty
     {
         return $this->properties[$name];
     }
 
     private function mustBeString(string $key): void {}
-    private function mustBePropertyAnalysis(Property $value): void {}
+    private function mustDescribeTheProperty(DescribesTheProperty $value): void {}
 }
