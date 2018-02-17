@@ -13,12 +13,12 @@ final class Type
         $this->type = $type;
     }
 
-    public static function is(string $type) : self
+    public static function is(string $type): self
     {
         return new self($type);
     }
 
-    public function __toString() : string
+    public function __toString(): string
     {
         return $this->type;
     }

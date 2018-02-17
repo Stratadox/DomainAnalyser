@@ -13,13 +13,13 @@ class NodeConnector extends NodeVisitorAbstract
     /** @var Node */
     private $prev;
 
-    public function beforeTraverse(array $nodes)
+    public function beforeTraverse(array $nodes): void
     {
         $this->stack = [];
         $this->prev = null;
     }
 
-    public function enterNode(Node $node)
+    public function enterNode(Node $node): void
     {
         if (!empty($this->stack)) {
             $node->setAttribute('parent', $this->stack[count($this->stack) - 1]);
@@ -31,13 +31,13 @@ class NodeConnector extends NodeVisitorAbstract
         $this->stack[] = $node;
     }
 
-    public function leaveNode(Node $node)
+    public function leaveNode(Node $node): void
     {
         $this->prev = $node;
         array_pop($this->stack);
     }
 
-    private function hasSameParentAsPrevious(Node $node)
+    private function hasSameParentAsPrevious(Node $node): bool
     {
         return $this->prev->getAttribute('parent') === $node->getAttribute('parent');
     }

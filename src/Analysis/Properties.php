@@ -18,16 +18,16 @@ final class Properties
         $this->properties = $properties;
     }
 
-    public static function with(array $properties) : self
+    public static function with(array $properties): self
     {
         return new self($properties);
     }
 
-    public function property(string $name) : Property
+    public function property(string $name): Property
     {
         return $this->properties[$name];
     }
 
-    private function mustBeString(string $key) : void {}
-    private function mustBePropertyAnalysis(Property $value) : void {}
+    private function mustBeString(string $key): void {}
+    private function mustBePropertyAnalysis(Property $value): void {}
 }

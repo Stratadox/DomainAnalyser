@@ -19,14 +19,14 @@ class AssignmentCollector extends NodeVisitorAbstract
         $this->assignments = new Assignments;
     }
 
-    public function leaveNode(Node $currentNode)
+    public function leaveNode(Node $currentNode): void
     {
         if ($currentNode instanceof Assignment) {
             $this->registerAssignment($currentNode);
         }
     }
 
-    private function registerAssignment(Assignment $node)
+    private function registerAssignment(Assignment $node): void
     {
         if (!$node->var instanceof PropertyFetch) {
             return;
@@ -37,18 +37,18 @@ class AssignmentCollector extends NodeVisitorAbstract
         $this->assignments = $this->assignments->add($node);
     }
 
-    public function assignments() : Assignments
+    public function assignments(): Assignments
     {
         return $this->assignments;
     }
 
-    private function isOwnProperty(PropertyFetch $property)
+    private function isOwnProperty(PropertyFetch $property): bool
     {
         return $property->var instanceof Variable
             && $this->appliesToMe($property->var);
     }
 
-    private function appliesToMe(Variable $assignment)
+    private function appliesToMe(Variable $assignment): bool
     {
         return $assignment->name === 'this';
     }

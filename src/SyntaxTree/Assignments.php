@@ -18,7 +18,7 @@ class Assignments extends ImmutableCollection implements Appendable
         parent::__construct(...$assignments);
     }
 
-    public function current() : Assign
+    public function current(): Assign
     {
         return parent::current();
     }

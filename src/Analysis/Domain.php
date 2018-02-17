@@ -17,16 +17,16 @@ final class Domain
         $this->classes = $classes;
     }
 
-    public static function with(array $classes) : self
+    public static function with(array $classes): self
     {
         return new self($classes);
     }
 
-    public function ofThe(string $class) : Properties
+    public function ofThe(string $class): Properties
     {
         return $this->classes[$class];
     }
 
-    private function mustBeString(string $key) : void {}
-    private function mustBeClassAnalysis(Properties $value) : void {}
+    private function mustBeString(string $key): void {}
+    private function mustBeClassAnalysis(Properties $value): void {}
 }

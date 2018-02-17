@@ -15,22 +15,22 @@ final class Property
         $this->elementType = $element;
     }
 
-    public static function forType(string $type) : self
+    public static function forType(string $type): self
     {
         return new self($type, null);
     }
 
-    public static function forCollection(string $type, string $element) : self
+    public static function forCollection(string $type, string $element): self
     {
         return new self($type, $element);
     }
 
-    public function type() : string
+    public function type(): string
     {
         return $this->type;
     }
 
-    public function elementType() : ?string
+    public function elementType(): ?string
     {
         return $this->elementType;
     }

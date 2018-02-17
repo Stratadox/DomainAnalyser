@@ -9,7 +9,7 @@ use PhpParser\Node\Stmt\ClassMethod;
 
 class MethodFinder
 {
-    public function methodOfThe(Assign $expression) : ClassMethod
+    public function methodOfThe(Assign $expression): ClassMethod
     {
         do {
             $expression = $expression->getAttribute('parent');
