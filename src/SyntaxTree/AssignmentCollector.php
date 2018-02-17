@@ -10,7 +10,7 @@ use PhpParser\Node\Expr\PropertyFetch;
 use PhpParser\Node\Expr\Variable;
 use PhpParser\NodeVisitorAbstract;
 
-class AssignmentCollector extends NodeVisitorAbstract
+final class AssignmentCollector extends NodeVisitorAbstract
 {
     private $assignments;
 

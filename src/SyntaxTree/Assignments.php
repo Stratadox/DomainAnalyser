@@ -9,7 +9,7 @@ use Stratadox\Collection\Appendable;
 use Stratadox\ImmutableCollection\Appending;
 use Stratadox\ImmutableCollection\ImmutableCollection;
 
-class Assignments extends ImmutableCollection implements Appendable
+final class Assignments extends ImmutableCollection implements Appendable
 {
     use Appending;
 

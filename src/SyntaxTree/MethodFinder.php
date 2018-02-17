@@ -7,7 +7,7 @@ namespace Stratadox\DomainAnalyser\SyntaxTree;
 use PhpParser\Node\Expr\Assign;
 use PhpParser\Node\Stmt\ClassMethod;
 
-class MethodFinder
+final class MethodFinder
 {
     public function methodOfThe(Assign $expression): ClassMethod
     {

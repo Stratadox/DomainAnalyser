@@ -6,6 +6,6 @@ namespace Stratadox\DomainAnalyser\SyntaxTree;
 
 use RuntimeException;
 
-class MethodNotFound extends RuntimeException
+final class MethodNotFound extends RuntimeException
 {
 }

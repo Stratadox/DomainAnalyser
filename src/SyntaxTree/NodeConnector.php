@@ -7,7 +7,7 @@ namespace Stratadox\DomainAnalyser\SyntaxTree;
 use PhpParser\Node;
 use PhpParser\NodeVisitorAbstract;
 
-class NodeConnector extends NodeVisitorAbstract
+final class NodeConnector extends NodeVisitorAbstract
 {
     private $stack;
     /** @var Node */
@@ -24,7 +24,10 @@ class NodeConnector extends NodeVisitorAbstract
         if (!empty($this->stack)) {
             $node->setAttribute('parent', $this->stack[count($this->stack) - 1]);
         }
-        if ($this->prev && $this->hasSameParentAsPrevious($node)) {
+        if (
+            $this->prev &&
+            $this->prev->getAttribute('parent') === $node->getAttribute('parent')
+        ) {
             $node->setAttribute('prev', $this->prev);
             $this->prev->setAttribute('next', $node);
         }
@@ -35,10 +38,5 @@ class NodeConnector extends NodeVisitorAbstract
     {
         $this->prev = $node;
         array_pop($this->stack);
-    }
-
-    private function hasSameParentAsPrevious(Node $node): bool
-    {
-        return $this->prev->getAttribute('parent') === $node->getAttribute('parent');
     }
 }
