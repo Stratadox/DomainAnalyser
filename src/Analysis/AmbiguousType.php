@@ -6,9 +6,10 @@ namespace Stratadox\DomainAnalyser\Analysis;
 
 use function array_map as maybe;
 use function implode;
+use Stratadox\DomainAnalyser\DescribesTheType;
 use Stratadox\ImmutableCollection\ImmutableCollection;
 
-final class AmbiguousType extends ImmutableCollection
+final class AmbiguousType extends ImmutableCollection implements DescribesTheType
 {
     public function __construct(Type ...$types)
     {

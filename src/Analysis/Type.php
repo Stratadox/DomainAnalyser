@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Stratadox\DomainAnalyser\Analysis;
 
-final class Type
+use Stratadox\DomainAnalyser\DescribesTheType;
+
+final class Type implements DescribesTheType
 {
     private $type;
 

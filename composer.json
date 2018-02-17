@@ -9,7 +9,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Stratadox\\DomainAnalyser\\": "src"
+      "Stratadox\\DomainAnalyser\\": ["src", "contracts"]
     }
   },
   "autoload-dev": {

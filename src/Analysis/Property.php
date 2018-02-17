@@ -4,33 +4,49 @@ declare(strict_types=1);
 
 namespace Stratadox\DomainAnalyser\Analysis;
 
+use Stratadox\DomainAnalyser\DescribesTheType;
+
 final class Property
 {
     private $type;
     private $elementType;
 
-    private function __construct(string $type, ?string $element)
+    private function __construct(DescribesTheType $type, ?DescribesTheType $element)
     {
         $this->type = $type;
         $this->elementType = $element;
     }
 
-    public static function forType(string $type): self
+    public static function forType(string $type): Property
     {
-        return new self($type, null);
+        return new Property(Type::is($type), null);
     }
 
-    public static function forCollection(string $type, string $element): self
+    public static function forThe(DescribesTheType $type): Property
     {
-        return new self($type, $element);
+        return new Property($type, null);
     }
 
-    public function type(): string
+    public static function forCollection(
+        string $collection,
+        string $element
+    ): Property {
+        return new Property(Type::is($collection), Type::is($element));
+    }
+
+    public static function forTheCollectionOf(
+        DescribesTheType $collection,
+        DescribesTheType $element
+    ): Property {
+        return new Property($collection, $element);
+    }
+
+    public function type(): DescribesTheType
     {
         return $this->type;
     }
 
-    public function elementType(): ?string
+    public function elementType(): ?DescribesTheType
     {
         return $this->elementType;
     }
