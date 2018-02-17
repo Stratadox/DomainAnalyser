@@ -10,6 +10,7 @@ use Stratadox\DomainAnalyser\Analysis\Property;
 use Stratadox\DomainAnalyser\DomainAnalyser;
 use Stratadox\DomainAnalyser\Test\Feature\Double\FooBar\Bar;
 use Stratadox\DomainAnalyser\Test\Feature\Double\FooBar\Baz;
+use Stratadox\DomainAnalyser\Test\Feature\Double\FooBar\Flux;
 use Stratadox\DomainAnalyser\Test\Feature\Double\FooBar\Foo;
 use Stratadox\DomainAnalyser\Test\Feature\Double\FooBar\Qux;
 
@@ -77,6 +78,25 @@ class Retrieving_the_FooBar_property_types extends TestCase
         $this->assertEquals(
             Qux::class,
             $property->elementType()
+        );
+    }
+
+    /** @test */
+    function Flux_has_either_a_Bar_or_a_Baz()
+    {
+        $property = $this->propertyOf(Flux::class, 'barabaz');
+
+        $this->assertEquals(
+            Bar::class.'|'.Baz::class,
+            $property->type()
+        );
+        $this->assertEquals(
+            Bar::class,
+            $property->type()[0]
+        );
+        $this->assertEquals(
+            Baz::class,
+            $property->type()[1]
         );
     }
 
