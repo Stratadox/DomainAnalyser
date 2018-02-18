@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Stratadox\DomainAnalyser\Analysis;
 
+use Stratadox\DomainAnalyser\DescribesTheDomain;
 use Stratadox\DomainAnalyser\DescribesTheProperties;
 
-final class Domain
+final class Domain implements DescribesTheDomain
 {
     private $classes;
 
