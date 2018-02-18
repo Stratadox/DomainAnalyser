@@ -27,6 +27,9 @@ final class Domain implements DescribesTheDomain
 
     public function ofThe(string $class): DescribesTheProperties
     {
+        if (!isset($this->classes[$class])) {
+            throw UnknownClass::neverAnalysedThe($class);
+        }
         return $this->classes[$class];
     }
 
