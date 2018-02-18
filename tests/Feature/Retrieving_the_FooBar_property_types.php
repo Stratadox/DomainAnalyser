@@ -7,6 +7,8 @@ namespace Stratadox\DomainAnalyser\Test\Feature;
 use PHPUnit\Framework\TestCase;
 use Stratadox\DomainAnalyser\Analysis\Properties;
 use Stratadox\DomainAnalyser\Analysis\Property;
+use Stratadox\DomainAnalyser\DescribesTheProperties;
+use Stratadox\DomainAnalyser\DescribesTheProperty;
 use Stratadox\DomainAnalyser\DomainAnalyser;
 use Stratadox\DomainAnalyser\Test\Feature\Double\FooBar\Bar;
 use Stratadox\DomainAnalyser\Test\Feature\Double\FooBar\Baz;
@@ -111,12 +113,11 @@ class Retrieving_the_FooBar_property_types extends TestCase
     private function property(
         Properties $classAnalysis,
         string $property
-    ) : Property
-    {
+    ) : DescribesTheProperty {
         return $classAnalysis->property($property);
     }
 
-    private function analysed(string $class) : Properties
+    private function analysed(string $class) : DescribesTheProperties
     {
         return $this->analysis->ofThe($class);
     }
