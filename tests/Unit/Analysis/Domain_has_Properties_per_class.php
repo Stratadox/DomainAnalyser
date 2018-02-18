@@ -11,9 +11,11 @@ use Stratadox\DomainAnalyser\Analysis\Property;
 use Stratadox\DomainAnalyser\Test\Unit\Double\Bar;
 use Stratadox\DomainAnalyser\Test\Unit\Double\Foo;
 use Stratadox\DomainAnalyser\Test\Unit\Double\Foos;
+use Stratadox\DomainAnalyser\WhenTheRequestedClassWasNotAnalysed;
 
 /**
  * @covers \Stratadox\DomainAnalyser\Analysis\Domain
+ * @covers \Stratadox\DomainAnalyser\Analysis\UnknownClass
  */
 class Domain_has_Properties_per_class extends TestCase
 {
@@ -41,5 +43,18 @@ class Domain_has_Properties_per_class extends TestCase
             $barAnalysis,
             $domainAnalysis->ofThe(Bar::class)
         );
+    }
+
+    /** @test */
+    function trying_to_retrieve_a_class_that_was_not_analysed()
+    {
+        $domainAnalysis = Domain::with([/** No classes */]);
+
+        $this->expectException(WhenTheRequestedClassWasNotAnalysed::class);
+        $this->expectExceptionMessage(
+            'There is no analysis information available for the class: `'.Foo::class.'`'
+        );
+
+        $domainAnalysis->ofThe(Foo::class);
     }
 }
