@@ -32,7 +32,11 @@ final class DownToTheRoot implements Iterator
 
     public function next(): void
     {
-        $this->currentNode = $this->currentNode->getAttribute('prev');
+        $candidate = $this->currentNode->getAttribute('prev');
+        if (is_null($candidate)) {
+            $candidate = $this->currentNode->getAttribute('parent');
+        }
+        $this->currentNode = $candidate;
         $this->distanceTraveled++;
     }
 
