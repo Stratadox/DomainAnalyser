@@ -46,4 +46,25 @@ class DownToTheRoot_traverses_down_from_a_starting_node extends TestCase
             $this->assertSame($node[$atCurrentIndex], $actualNode);
         }
     }
+
+    /** @test */
+    function next_siblings_are_ignored()
+    {
+        $node[-1] = new Variable('foo');
+        $node[-2] = new Variable('foo', ['prev' => $node[-1]]);
+
+        $node[4] = new Variable('foo');
+        $node[3] = new Variable('foo', ['prev' => $node[4], 'next' => $node[-2]]);
+        $node[2] = new Variable('foo', ['parent' => $node[3]]);
+        $node[1] = new Variable('foo', ['prev' => $node[2]]);
+        $node[0] = new Variable('foo', ['prev' => $node[1], 'next' => $node[-1]]);
+
+        $traversal = DownToTheRoot::startingAt($node[0]);
+
+        $this->assertCount(5, $traversal);
+
+        foreach ($traversal as $atCurrentIndex => $actualNode) {
+            $this->assertSame($node[$atCurrentIndex], $actualNode);
+        }
+    }
 }
